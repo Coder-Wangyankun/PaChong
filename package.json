@@ -13,5 +13,9 @@
   "dependencies": {
     "@types/superagent": "^4.1.16",
     "superagent": "^8.0.9"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.31",
+    "cheerio": "^1.0.0-rc.12"
   }
 }
