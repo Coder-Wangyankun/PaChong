@@ -19,6 +19,8 @@ interface JsonContent {
 }
 
 export default class DellAnalyzer implements Analyzer {
+  private static instance: DellAnalyzer; // 作为单例模式的实例
+
   // 处理 html 格式数据
   private getCourseInfo(html: string) {
     const $ = cheerio.load(html);
@@ -55,5 +57,12 @@ export default class DellAnalyzer implements Analyzer {
     const result = this.generateJsonContent(courseInfo, filePath);
     return result;
   }
-  constructor() {}
+  private constructor() {} // 保护 constructor
+
+  static getInstance() {
+    if (!DellAnalyzer.instance) {
+      DellAnalyzer.instance = new DellAnalyzer();
+    }
+    return DellAnalyzer.instance;
+  }
 }
